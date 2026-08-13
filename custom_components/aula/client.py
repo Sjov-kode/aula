@@ -900,8 +900,13 @@ class Client:
             headers = {"content-type": "application/json"}
             if csrf_token:
                 headers["csrfp-token"] = csrf_token
-            start = datetime.datetime.now(datetime.timezone.utc).strftime(
-                "%Y-%m-%d 00:00:00.0000%z"
+                start = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=7)
+                start = start.strftime("%Y-%m-%d 00:00:00.0000%z")
+                
+                _end = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(
+                    days=14
+                )
+                end = _end.strftime("%Y-%m-%d 00:00:00.0000%z")
             )
             _end = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(
                 days=14
